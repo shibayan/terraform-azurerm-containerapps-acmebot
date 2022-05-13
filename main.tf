@@ -75,8 +75,9 @@ resource "azurerm_function_app" "function" {
   }
 
   site_config {
-    ftps_state      = "Disabled"
-    min_tls_version = "1.2"
+    dotnet_framework_version = "v6.0"
+    ftps_state               = "Disabled"
+    min_tls_version          = "1.2"
 
     dynamic "ip_restriction" {
       for_each = var.allowed_ip_addresses
