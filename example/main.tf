@@ -18,7 +18,7 @@ resource "azurerm_resource_group" "default" {
 
 module "containerapps_acmebot" {
   source  = "shibayan/containerapps-acmebot/azurerm"
-  version = "~> 1.0"
+  version = "~> 2.0"
 
   function_app_name     = "func-acmebot-module"
   app_service_plan_name = "plan-acmebot-module"
@@ -29,6 +29,8 @@ module "containerapps_acmebot" {
   location              = azurerm_resource_group.default.location
   mail_address          = "YOUR-EMAIL-ADDRESS"
   subscription_id       = data.azurerm_client_config.current.subscription_id
+
+  allowed_ip_addresses = ["0.0.0.0"]
 }
 
 output "principal_id" {
